@@ -1,0 +1,12 @@
+:root {
+  /* Color Tokens */
+  --teal-main: hsl(155deg, 61%, 51%);
+  --blue-main: hsl(163deg, 23%, 53%);
+  --white-main: hsl(207deg, 100%, 98%);
+  --red-main: hsl(342deg, 60%, 37%);
+  --brown-main: hsl(27deg, 97%, 65%);
+
+  /* Font Tokens */
+  --font-body: "Josefin Sans", sans-serif;
+  --font-highlight: "Bungee Shade", sans-serif;
+}

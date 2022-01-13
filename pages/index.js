@@ -1,25 +1,24 @@
-import { useState, useEffect, useRef } from "react";
-import BIRDS from "vanta/dist/vanta.birds.min";
+import BirdsWrapper from "../components/single/BirdsWrapper";
+import styled from "styled-components";
 
 export default function Home() {
-  const [vantaEffect, setVantaEffect] = useState(0);
-  const myRef = useRef(null);
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        BIRDS({
-          el: myRef.current,
-        })
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
-
   return (
     <>
-      <div ref={myRef} style={{ height: "100vh", width: "100vw" }}></div>
+      <BirdsWrapper>
+        <SubHeader>Isaac King</SubHeader>
+        <Header>WEB DEVELOPER</Header>
+      </BirdsWrapper>
     </>
   );
 }
+
+const Header = styled.h1`
+  font-family: var(--font-highlight);
+  font-size: 8rem;
+  color: var(--red-main);
+`;
+
+const SubHeader = styled.h2`
+  font-size: 4rem;
+  color: var(--teal-main);
+`;
