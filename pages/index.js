@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <>
       <BirdsWrapper>
-        <SubHeader>Isaac King</SubHeader>
-        <Header>WEB DEVELOPER</Header>
+        {/* <SubHeader>Isaac King</SubHeader>
+        <Header>WEB DEVELOPER</Header> */}
       </BirdsWrapper>
     </>
   );

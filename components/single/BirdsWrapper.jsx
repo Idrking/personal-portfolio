@@ -17,9 +17,9 @@ export default function BirdsWrapper({ children }) {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          backgroundColor: 0xf4faff,
-          color1: 0x35ce8d,
-          color2: 0x982649,
+          backgroundColor: 0x0a0908,
+          color1: 0xdb0054,
+          color2: 0x00e8fc,
           birdSize: 1.9,
           wingSpan: 31.0,
           speedLimit: 3.0,
@@ -27,6 +27,7 @@ export default function BirdsWrapper({ children }) {
           alignment: 4.0,
           cohesion: 100.0,
           quantity: 3.0,
+          colorMode: "lerp",
         })
       );
     }
@@ -42,3 +43,7 @@ const Wrapper = styled.section`
   width: 100vw;
   height: 100vh;
 `;
+
+// backgroundColor: 0xf4faff,
+// color1: 0x35ce8d,
+// color2: 0x982649,

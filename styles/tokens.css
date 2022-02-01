@@ -6,7 +6,15 @@
   --red-main: hsl(342deg, 60%, 37%);
   --brown-main: hsl(27deg, 97%, 65%);
 
+  --red-new: hsl(337deg, 100%, 43%);
+  --blue-bright: hsl(196deg, 100%, 34%);
+  --blue-new: hsl(185deg, 100%, 49%);
+  --yellow-new: hsl(37deg, 100%, 61%);
+  --black-main: hsl(30deg, 11%, 4%);
+
   /* Font Tokens */
   --font-body: "Josefin Sans", sans-serif;
   --font-highlight: "Bungee Shade", sans-serif;
 }
+
+/* --red-new: hsl(352deg, 90%, 39%); */
