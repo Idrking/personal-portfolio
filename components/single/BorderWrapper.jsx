@@ -7,15 +7,11 @@ export default function BorderWrapper({ children }) {
       {children}
       <LeftBorderOne
         animate={{
-          backgroundColor: [
-            "var(--red-new)",
-            "var(--blue-new)",
-            "var(--yellow-new)",
-          ],
+          backgroundColor: ["red", "blue", "yellow"],
         }}
         transition={{ repeat: Infinity, duration: 5 }}
       />
-      <LeftBorderTwo style={{ backgroundColor: "var(--blue-main)" }} />
+      <LeftBorderTwo />
       <LeftBorderThree />
       <BottomBorderOne />
       <BottomBorderTwo />
@@ -105,7 +101,8 @@ const RightBorderTwo = styled(RightBorder)`
 
 const RightBorderThree = styled(RightBorder)`
   right: calc(var(--width) * 2);
-  height: calc(100% - calc(var(--width) * 2));
+  height: calc(100% - calc(var(--width) * 4));
+  top: calc(var(--width) * 2);
   background-color: var(--yellow-new);
 `;
 
