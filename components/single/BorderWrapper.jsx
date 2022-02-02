@@ -4,6 +4,15 @@ import styled from "styled-components";
 export default function BorderWrapper({ children }) {
   return (
     <>
+      <EyeBorder>
+        <EyeOuter>
+          <EyeInnerOne>
+            <EyeInnerTwo>
+              <Iris />
+            </EyeInnerTwo>
+          </EyeInnerOne>
+        </EyeOuter>
+      </EyeBorder>
       {children}
       <LeftBorderOne
         animate={{
@@ -127,4 +136,59 @@ const TopBorderTwo = styled(TopBorder)`
 const TopBorderThree = styled(TopBorder)`
   top: calc(var(--height) * 2);
   background-color: var(--yellow-new);
+`;
+
+const EyePiece = styled(motion.div)`
+  border-radius: 50%;
+`;
+const EyeBorder = styled(EyePiece)`
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue-new);
+  position: relative;
+  transform: rotate(360deg);
+  transition: transform 10s;
+
+  z-index: 4;
+`;
+const EyeOuter = styled(EyePiece)`
+  background-color: white;
+  width: 135px;
+  position: relative;
+  height: 135px;
+  z-index: 5;
+  overflow: hidden;
+`;
+
+const EyeInnerOne = styled(EyePiece)`
+  background-color: var(--yellow-new);
+  width: 80px;
+  height: 80px;
+  z-index: 6;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+`;
+
+const EyeInnerTwo = styled(EyePiece)`
+  background-color: var(--red-new);
+  width: 60px;
+  height: 60px;
+  z-index: 7;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+`;
+
+const Iris = styled(EyePiece)`
+  background-color: var(--black-main);
+  width: 30px;
+  height: 30px;
+  z-index: 8;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 `;
