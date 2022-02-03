@@ -2,14 +2,7 @@ import BirdsWrapper from "../components/single/BirdsWrapper";
 import styled from "styled-components";
 
 export default function Home() {
-  return (
-    <>
-      <BirdsWrapper>
-        {/* <SubHeader>Isaac King</SubHeader>
-        <Header>WEB DEVELOPER</Header> */}
-      </BirdsWrapper>
-    </>
-  );
+  return <></>;
 }
 
 const Header = styled.h1`

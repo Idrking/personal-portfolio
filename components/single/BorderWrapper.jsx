@@ -36,7 +36,7 @@ export default function BorderWrapper({ children }) {
 }
 
 const LeftBorder = styled(motion.div)`
-  --width: 15px;
+  --width: 25px;
   position: fixed;
   width: var(--width);
   z-index: 2;
@@ -64,7 +64,7 @@ const LeftBorderThree = styled(LeftBorder)`
 `;
 
 const BottomBorder = styled(motion.div)`
-  --height: 15px;
+  --height: 25px;
   height: var(--height);
   position: fixed;
   width: 100%;
@@ -88,7 +88,7 @@ const BottomBorderThree = styled(BottomBorder)`
 `;
 
 const RightBorder = styled(motion.div)`
-  --width: 15px;
+  --width: 25px;
   width: var(--width);
   position: fixed;
   z-index: 2;
@@ -116,7 +116,7 @@ const RightBorderThree = styled(RightBorder)`
 `;
 
 const TopBorder = styled(motion.div)`
-  --height: 15px;
+  --height: 25px;
   position: fixed;
   height: var(--height);
   width: 100%;
@@ -149,8 +149,8 @@ const EyeBorder = styled(EyePiece)`
   align-items: center;
   background-color: var(--blue-new);
   position: relative;
-  transform: rotate(360deg);
-  transition: transform 10s;
+  transform: rotate(40deg);
+  transition: transform 1s ease-out;
 
   z-index: 4;
 `;
