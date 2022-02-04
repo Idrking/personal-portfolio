@@ -1,4 +1,3 @@
-import BirdsWrapper from "../components/single/BirdsWrapper";
 import styled from "styled-components";
 
 export default function Home() {
