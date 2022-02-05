@@ -1,5 +1,10 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const mouseTest = (e, stateFunc) => {
+  stateFunc((e.offsetX % 360) + (e.offsetY % 360));
+};
 
 const EyeBall = ({
   animations,
@@ -8,6 +13,20 @@ const EyeBall = ({
   position,
   initialcolor,
 }) => {
+  const [rotation, setRotation] = useState(0);
+
+  useEffect(() => {
+    const mouseArrest = (e) => {
+      mouseTest(e, setRotation);
+    };
+
+    document.addEventListener("mousemove", mouseArrest);
+
+    return () => {
+      document.removeEventListener("mousemove", mouseArrest);
+    };
+  });
+
   return (
     <EyeBorder
       variants={animations}
@@ -15,6 +34,7 @@ const EyeBall = ({
       size={size}
       position={position}
       initialcolor={initialcolor}
+      rotation={rotation}
     >
       <EyeOuter>
         <EyeInnerOne>
@@ -32,7 +52,9 @@ export default EyeBall;
 const EyePiece = styled(motion.div)`
   border-radius: 50%;
 `;
-const EyeBorder = styled(EyePiece)`
+const EyeBorder = styled(EyePiece).attrs((p) => ({
+  transform: `rotate(${p.rotation}deg);`,
+}))`
   --size: ${(p) => p.size};
   height: var(--size);
   width: var(--size);
@@ -41,7 +63,8 @@ const EyeBorder = styled(EyePiece)`
   align-items: center;
   background-color: ${(p) => p.initialcolor};
   position: fixed;
-  transition: transform 5s ease-out;
+
+  transition: transform 100ms ease-out;
   ${(p) => p.position}
   z-index: 4;
 `;
@@ -51,7 +74,6 @@ const EyeOuter = styled(EyePiece)`
   position: relative;
   height: calc(var(--size) * 0.85);
   z-index: 5;
-  /* overflow: hidden; */
 `;
 
 const EyeInnerOne = styled(EyePiece)`
@@ -60,8 +82,8 @@ const EyeInnerOne = styled(EyePiece)`
   height: calc(var(--size) * 0.6);
   z-index: 6;
   position: absolute;
-  bottom: calc(var(--size) * 0.03);
-  right: calc(var(--size) * 0.03);
+  top: calc(var(--size) * 0.03);
+  right: calc(var(--size) * 0.13);
 `;
 
 const EyeInnerTwo = styled(EyePiece)`
@@ -70,8 +92,8 @@ const EyeInnerTwo = styled(EyePiece)`
   height: calc(var(--size) * 0.4);
   z-index: 7;
   position: absolute;
-  bottom: calc(var(--size) * 0.03);
-  right: calc(var(--size) * 0.03);
+  top: calc(var(--size) * 0.03);
+  right: calc(var(--size) * 0.13);
 `;
 
 const Iris = styled(EyePiece)`
@@ -80,7 +102,7 @@ const Iris = styled(EyePiece)`
   height: calc(var(--size) * 0.25);
   z-index: 8;
   position: absolute;
-  bottom: calc(var(--size) * 0.03);
-  right: calc(var(--size) * 0.03);
+  top: calc(var(--size) * 0.03);
+  right: calc(var(--size) * 0.08);
   border: 2px solid var(--blue-main);
 `;
