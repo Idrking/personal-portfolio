@@ -4,9 +4,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />

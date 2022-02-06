@@ -1,9 +1,22 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
-const mouseTest = (e, stateFunc) => {
-  stateFunc((e.offsetX % 360) + (e.offsetY % 360));
+const calculateRotation = (e, pos, stateFunc) => {
+  const radians = Math.atan2(e.clientX - pos.centerX, e.clientY - pos.centerY);
+  const degree = radians * (180 / Math.PI) * -1 + 180;
+  stateFunc(degree);
+};
+
+const getEyePosition = (uniqueID) => {
+  if (typeof window !== "undefined") {
+    const eyeball = document.getElementById(`eyeball${uniqueID}`);
+    const eyeballBox = eyeball.getBoundingClientRect();
+    return {
+      centerX: eyeballBox.left + eyeballBox.width / 2 - window.scrollX,
+      centerY: eyeballBox.top + eyeballBox.height / 2 - window.scrollY,
+    };
+  }
 };
 
 const EyeBall = ({
@@ -12,18 +25,24 @@ const EyeBall = ({
   size,
   position,
   initialcolor,
+  uniqueID,
 }) => {
   const [rotation, setRotation] = useState(0);
+  const [eyePosition, setEyePosition] = useState({ centerX: 0, centerY: 0 });
 
   useEffect(() => {
-    const mouseArrest = (e) => {
-      mouseTest(e, setRotation);
+    setEyePosition(getEyePosition(uniqueID));
+  }, [uniqueID]);
+
+  useEffect(() => {
+    const eyeRotator = (e) => {
+      calculateRotation(e, eyePosition, setRotation);
     };
 
-    document.addEventListener("mousemove", mouseArrest);
+    document.addEventListener("mousemove", eyeRotator);
 
     return () => {
-      document.removeEventListener("mousemove", mouseArrest);
+      document.removeEventListener("mousemove", eyeRotator);
     };
   });
 
@@ -35,6 +54,8 @@ const EyeBall = ({
       position={position}
       initialcolor={initialcolor}
       rotation={rotation}
+      id={`eyeball${uniqueID}`}
+      style={{ transform: `rotate(${rotation}deg)` }}
     >
       <EyeOuter>
         <EyeInnerOne>
@@ -52,9 +73,7 @@ export default EyeBall;
 const EyePiece = styled(motion.div)`
   border-radius: 50%;
 `;
-const EyeBorder = styled(EyePiece).attrs((p) => ({
-  transform: `rotate(${p.rotation}deg);`,
-}))`
+const EyeBorder = styled(EyePiece)`
   --size: ${(p) => p.size};
   height: var(--size);
   width: var(--size);
@@ -63,8 +82,6 @@ const EyeBorder = styled(EyePiece).attrs((p) => ({
   align-items: center;
   background-color: ${(p) => p.initialcolor};
   position: fixed;
-
-  transition: transform 100ms ease-out;
   ${(p) => p.position}
   z-index: 4;
 `;

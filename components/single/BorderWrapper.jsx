@@ -30,6 +30,7 @@ export default function BorderWrapper({ children }) {
         initialcolor={PINKHEX}
         size="50px"
         position="top: 300px; left: 0px;"
+        uniqueID={"1"}
       />
       <EyeBall
         animations={borderPulse}
@@ -37,6 +38,7 @@ export default function BorderWrapper({ children }) {
         size="75px"
         position="top: 220px; left: 30px;"
         initialcolor={BLUEHEX}
+        uniqueID={"2"}
       />
       <EyeBall
         animations={borderPulse}
@@ -44,6 +46,16 @@ export default function BorderWrapper({ children }) {
         size="40px"
         position="top: 180px; left: 15px;"
         initialcolor={PINKHEX}
+        uniqueID="3"
+      />
+
+      <EyeBall
+        animations={borderPulse}
+        animationStart={"outerPulse"}
+        size="90px"
+        position="bottom: 200px; right: 0px;"
+        initialcolor={PINKHEX}
+        uniqueID="4"
       />
       {children}
       <LeftBorderOne variants={borderPulse} animate="outerPulse" />
