@@ -24,14 +24,14 @@ const borderPulse = {
 export default function BorderWrapper({ children }) {
   return (
     <>
-      <EyeBall
+      {/* <EyeBall
         animations={borderPulse}
         animationStart={"outerPulse"}
         initialcolor={PINKHEX}
         size="50px"
         position="top: 300px; left: 0px;"
         uniqueID={"1"}
-      />
+      /> */}
       <EyeBall
         animations={borderPulse}
         animationStart={"middlePulse"}
@@ -40,7 +40,7 @@ export default function BorderWrapper({ children }) {
         initialcolor={BLUEHEX}
         uniqueID={"2"}
       />
-      <EyeBall
+      {/* <EyeBall
         animations={borderPulse}
         animationStart={"outerPulse"}
         size="40px"
@@ -56,7 +56,7 @@ export default function BorderWrapper({ children }) {
         position="bottom: 200px; right: 0px;"
         initialcolor={PINKHEX}
         uniqueID="4"
-      />
+      /> */}
       {children}
       <LeftBorderOne variants={borderPulse} animate="outerPulse" />
       <LeftBorderTwo variants={borderPulse} animate="middlePulse" />
