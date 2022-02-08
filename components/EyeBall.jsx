@@ -19,12 +19,13 @@ const setDepth = (e, pos) => {
 
   if (!(primeDiff >= MAX_DEPTH)) {
     const percentOfMax = primeDiff / MAX_DEPTH;
+    console.log(percentOfMax);
     return 30 * percentOfMax;
   }
 
-  return 30;
+  return 30 * (primeDiff / MAX_DEPTH);
 };
-//KEEP ROTATE AND WE ONLY NEED TO DEAL WITH DISTANCE FROM TOP
+
 const getEyePosition = (uniqueID) => {
   if (typeof window !== "undefined") {
     const eyeball = document.getElementById(`eyeball${uniqueID}`);
